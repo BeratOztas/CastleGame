@@ -30,4 +30,7 @@ public class LevelView : MonoBehaviour
         _displayedLevel = level;
         label.text = "Lv." + level.ToString();
     }
+    public void UpdateColor(Color color) {
+        label.color = color;
+    }
 }
