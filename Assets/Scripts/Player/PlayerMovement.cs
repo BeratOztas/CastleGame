@@ -8,7 +8,7 @@ namespace Player
     [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour 
     {
-        [SerializeField] private PlayerAnimation playerAnimation;
+       
         [SerializeField] private Joystick joystick;
         [SerializeField] private CharacterController _controller;
         [SerializeField] private float maxSpeed;
@@ -18,22 +18,27 @@ namespace Player
         public float Speed { get { return _speed; } }
 
         private const float FaceAngleTolerance = 30f;
-        
 
-        
+
+        private bool _running = false;
+        public bool Running { get { return _running; } set { _running = value; } }
+
         private void Update()
         {
-            MoveInput();
-            HandleAnimations();
+            if (_running) { 
+               MoveInput();
+               HandleAnimations();
+            }
         }
         void HandleAnimations() {
             if (_speed > 0f) {
-                playerAnimation.Run(true);
+                PlayerAnimation.Instance.Run(true);
             }
             else {
-                playerAnimation.Run(false);
+                PlayerAnimation.Instance.Run(false);
             }
         }
+        
 
         void MoveInput() {
             var direction=joystick.Direction;

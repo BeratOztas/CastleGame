@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Singleton;
 
 namespace Player
 {
-    public class PlayerAnimation : MonoBehaviour
+    public class PlayerAnimation : MonoSingleton<PlayerAnimation>
     {
         [SerializeField] private Animator playerAnim;
        
@@ -13,6 +14,9 @@ namespace Player
         }
         public void Attack() {
             playerAnim.SetTrigger("Attack");
+        }
+        public void Death() {
+            playerAnim.SetTrigger("Death");
         }
     }
 }

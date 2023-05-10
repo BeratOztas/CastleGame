@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enemy;
 
 namespace Player
 {
@@ -8,7 +9,6 @@ namespace Player
     {
         [SerializeField] private PlayerManagement playerManagement;
         [SerializeField] private LevelView playerLevelView;
-
         private void Start()
         {
             playerLevelView.UpdateLevel(playerManagement.Level);
@@ -17,6 +17,7 @@ namespace Player
         private void OnEnable()
         {
             playerManagement.OnLevelChanged += OnLevelChanged;
+           
         }
         private void OnDisable()
         {
